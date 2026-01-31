@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +26,121 @@
         @keyframes fadeInBody {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        /* Cake and Candle Animation */
+        .cake-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            animation: fadeOutCake 3s ease-in-out forwards 4s;
+        }
+
+        .cake {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            animation: cakeFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeOutCake {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes cakeFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* Cake layers */
+        .cake-layer {
+            position: absolute;
+            border-radius: 10px;
+        }
+
+        .cake-bottom {
+            width: 280px;
+            height: 80px;
+            background: linear-gradient(to bottom, #ffcccb, #ff9999);
+            bottom: 0;
+            left: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .cake-middle {
+            width: 240px;
+            height: 70px;
+            background: linear-gradient(to bottom, #ffe4e1, #ffb6c1);
+            bottom: 80px;
+            left: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cake-top {
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(to bottom, #fff0f5, #ff69b4);
+            bottom: 150px;
+            left: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Candles */
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(to bottom, #fff, #ffd700);
+            border-radius: 5px;
+            bottom: 150px;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff9900, #ff3300, transparent 70%);
+            border-radius: 50%;
+            top: -25px;
+            left: -5px;
+            animation: flameFlicker 0.5s ease-in-out infinite alternate;
+            filter: blur(2px);
+        }
+
+        @keyframes flameFlicker {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .candle:nth-child(4) { left: 70px; }
+        .candle:nth-child(5) { left: 110px; }
+        .candle:nth-child(6) { left: 150px; }
+        .candle:nth-child(7) { left: 190px; }
+        .candle:nth-child(8) { left: 230px; }
+
+        .cake-text {
+            position: absolute;
+            bottom: 250px;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            text-shadow: 0 0 10px #ff4081;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px #ff4081; }
+            100% { text-shadow: 0 0 20px #ff4081, 0 0 30px #ff4081; }
         }
 
         /* Music Player with Auto-Play */
@@ -993,6 +1107,21 @@
     </style>
 </head>
 <body>
+    <!-- Cake and Candle Animation -->
+    <div class="cake-container" id="cakeContainer">
+        <div class="cake">
+            <div class="cake-text">Happy Birthday! 🎂</div>
+            <div class="cake-layer cake-bottom"></div>
+            <div class="cake-layer cake-middle"></div>
+            <div class="cake-layer cake-top"></div>
+            <div class="candle"></div>
+            <div class="candle"></div>
+            <div class="candle"></div>
+            <div class="candle"></div>
+            <div class="candle"></div>
+        </div>
+    </div>
+    
     <div class="fireworks" id="fireworks"></div>
     
     <!-- Music Controls -->
@@ -1168,10 +1297,53 @@
         <source src="https://files.catbox.moe/an0nd3.mp3" type="audio/mpeg">
     </audio>
     <audio id="birthdayMusic2" loop preload="auto">
-        <source src="https://soundcloud.com/mekonnen-demssie/romantic-music" type="audio/mpeg">
+        <source src="https://files.catbox.moe/rxata2.mp4" type="audio/mpeg">
     </audio>
 
     <script>
+        // ===== AUTO-PLAY MUSIC WITH CAKE ANIMATION =====
+        function initializeAutoFeatures() {
+            // Show cake and candle animation
+            const cakeContainer = document.getElementById('cakeContainer');
+            
+            // Auto-play music after cake animation (with delay)
+            setTimeout(() => {
+                const music1 = document.getElementById('birthdayMusic1');
+                const btn1 = document.getElementById('musicBtn1');
+                const icon1 = document.getElementById('icon1');
+                
+                // Try to play music automatically
+                const playPromise = music1.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Music started successfully
+                        icon1.className = 'fas fa-pause';
+                        btn1.classList.add('active');
+                        isPlaying1 = true;
+                    }).catch(error => {
+                        console.log("Auto-play prevented, will play after user interaction");
+                        // Add event listener for first user interaction
+                        const enableMusic = () => {
+                            music1.play().then(() => {
+                                icon1.className = 'fas fa-pause';
+                                btn1.classList.add('active');
+                                isPlaying1 = true;
+                            });
+                            document.removeEventListener('click', enableMusic);
+                            document.removeEventListener('touchstart', enableMusic);
+                        };
+                        
+                        document.addEventListener('click', enableMusic);
+                        document.addEventListener('touchstart', enableMusic);
+                    });
+                }
+            }, 1000); // Start music 1 second after page load
+        }
+
+        // Initialize auto features when page loads
+        window.addEventListener('load', initializeAutoFeatures);
+
         // ===== CONFIGURATION =====
         // Updated Photos with personalized notes
         const PHOTOS = [
@@ -1390,12 +1562,38 @@
                 }).catch(error => {
                     console.log("Auto-play prevented, waiting for user interaction");
                     // Will be triggered by user click
+                    // Show a subtle hint to click
+                    const hint = document.createElement('div');
+                    hint.style.cssText = `
+                        position: fixed;
+                        bottom: 120px;
+                        right: 20px;
+                        background: rgba(233, 30, 99, 0.9);
+                        color: white;
+                        padding: 10px 15px;
+                        border-radius: 10px;
+                        font-size: 0.9rem;
+                        z-index: 10000;
+                        animation: fadeInOut 3s ease forwards;
+                    `;
+                    hint.textContent = "Click anywhere for music 🎵";
+                    document.body.appendChild(hint);
+                    setTimeout(() => hint.remove(), 3000);
                 });
             }
         }
 
-        // Try auto-play after 2 seconds
-        setTimeout(attemptAutoPlay, 2000);
+        // Add fadeInOut animation
+        const hintStyle = document.createElement('style');
+        hintStyle.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(10px); }
+                20% { opacity: 1; transform: translateY(0); }
+                80% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(10px); }
+            }
+        `;
+        document.head.appendChild(hintStyle);
 
         // Music button 1 (Birthday Song)
         btn1.addEventListener('click', () => {
