@@ -903,6 +903,107 @@
             background: linear-gradient(135deg, #388e3c, #1b5e20);
         }
 
+        /* Poem Button */
+.poem-btn {
+    background: linear-gradient(135deg, #9c27b0, #673ab7, #3f51b5);
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    font-size: 1.8rem;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 15px 40px rgba(156, 39, 176, 0.5),
+        0 0 40px rgba(103, 58, 183, 0.4);
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 30px 10px;
+    text-transform: uppercase;
+    animation: poemGlow 3s infinite alternate;
+    border: 5px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+}
+
+@keyframes poemGlow {
+    0% { box-shadow: 0 15px 40px rgba(156, 39, 176, 0.5); }
+    100% { box-shadow: 0 15px 50px rgba(156, 39, 176, 0.7), 0 0 60px rgba(103, 58, 183, 0.5); }
+}
+
+.poem-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #7b1fa2, #512da8, #303f9f);
+    letter-spacing: 3px;
+}
+
+/* Poem Content */
+.poem-content {
+    display: none;
+    background: linear-gradient(135deg, rgba(255, 240, 245, 0.98), rgba(240, 240, 255, 0.98));
+    border-radius: 35px;
+    padding: 50px 40px;
+    margin-top: 40px;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.2),
+        inset 0 0 50px rgba(156, 39, 176, 0.1);
+    animation: poemReveal 1.2s ease;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid transparent;
+    border-image: linear-gradient(45deg, #9c27b0, #673ab7, #3f51b5) 1;
+    text-align: center;
+    font-family: 'Noto Sans Ethiopic', 'Poppins', sans-serif;
+}
+
+@keyframes poemReveal {
+    from { transform: translateY(60px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.poem-content .poem-title {
+    color: #9c27b0;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #9c27b0, #e91e63);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.poem-text {
+    font-size: 1.5rem;
+    line-height: 2.5;
+    color: #333;
+    text-align: center;
+    white-space: pre-line;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    font-family: 'Noto Sans Ethiopic', 'Poppins', sans-serif;
+}
+
+.poem-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #673ab7;
+    margin-top: 30px;
+    animation: signatureSparkle 4s infinite alternate;
+}
+
+.poem-emoji {
+    font-size: 2rem;
+    margin: 0 10px;
+    animation: float 3s infinite ease-in-out;
+}
+
         .hidden-surprise {
             display: none;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 240, 245, 0.98));
@@ -1354,7 +1455,67 @@
             <button class="promise-btn" id="promiseBtn">
                 <i class="fas fa-heart"></i> My Promise to You 💝
             </button>
-        </div>
+                    <!-- Poem Button -->
+            <button class="poem-btn" id="poemBtn">
+                <i class="fas fa-heart"></i> Poem for My Love 💌
+            </button>
+            
+            <div class="poem-content" id="poemContent">
+                <h2 class="poem-title">To My Beautiful Ruth 💖</h2>
+                <div class="poem-text">
+𝑒𝑛𝑘𝑢𝑎𝑛𝑚 𝑤𝑒𝑙𝑒𝑑𝑢𝑠ℎ 👨‍👩‍👧
+𝑙𝑒.𝑒𝑛𝑎𝑡 𝑒𝑛𝑎 𝑎𝑏𝑎𝑡𝑠ℎ 𝑘𝑏𝑟 𝑦𝑎𝑑𝑙𝑎𝑐ℎ𝑒𝑤
+𝑘𝑒.𝑎𝑛𝑑 𝑤𝑒𝑛𝑑 𝑙𝑏 𝑙𝑎𝑦 𝑛𝑔𝑠𝑡 👸 𝑛𝑒𝑠ℎ 𝑙𝑗𝑎𝑐ℎ𝑒𝑤
+𝑒𝑛𝑘𝑢𝑎𝑛𝑚 𝑓𝑒𝑡𝑒𝑟𝑒𝑐ℎ𝑠ℎ👧
+𝑛𝑒𝑡𝑒𝑙𝑎 𝑙𝑒𝑏𝑠ℎ𝑒 𝑛𝑔𝑠 
+𝑏𝑎𝑙𝑎𝑤𝑒𝑡𝑎 𝑏𝑎𝑙𝑎𝑠𝑔𝑒𝑏𝑎 𝑠𝑙𝑒𝑡
+"𝑦𝑎.𝑚𝑒𝑡" 𝑛𝑎𝑡 𝑏𝑒𝑙𝑏𝑒 𝑎𝑛𝑐ℎ𝑛
+𝑛𝑒𝑓𝑠 𝑧𝑒𝑟𝑡𝑎 𝑦𝑒𝑠𝑒𝑡𝑒𝑐ℎ𝑔𝑛 𝑒𝑙𝑒𝑡
+𝑒𝑛𝑘𝑢𝑎𝑛𝑚 𝑡𝑒𝑤𝑒𝑙𝑒𝑑𝑠ℎ 👨‍🍼
+𝑦𝑡𝑎𝑦𝑠ℎ𝑎𝑙 𝑠𝑎𝑞𝑒 😀 ?
+𝑏𝑎𝑡𝑛𝑜𝑟𝑖 𝑚𝑛 𝑎𝑤𝑘𝑒 ?
+𝑏𝑎𝑙𝑎𝑤𝑘𝑠ℎ 𝑚𝑛 𝑔𝑒𝑏𝑡𝑜𝑔𝑛 ?
+𝑠𝑒𝑤 𝑎𝑟𝑒𝑔𝑒𝑔𝑛 𝑎𝑦𝑑𝑒𝑙
+𝑎𝑚𝑙𝑎𝑘 𝑎𝑛𝑐ℎ𝑖𝑛 𝑠𝑒𝑡𝑜𝑔𝑛
+𝑙𝑏𝑒 😍 𝑦𝑡𝑎𝑦𝑠ℎ𝑎𝑙 ?
+𝑘𝑒𝑠𝑒𝑤 𝑚𝑒ℎ𝑎𝑙 𝑚𝑒𝑟𝑡𝑜 𝑦𝑠𝑒𝑠𝑡𝑙𝑠ℎ𝑎𝑙
+𝑡𝑎𝑦𝑖𝑔𝑛𝑎𝑙𝑒𝑠ℎ 𝑒𝑛𝑒𝑛 ?
+𝑡𝑎𝑚𝑔𝑛𝑖𝑤𝑎𝑙𝑒𝑠ℎ 𝑎𝑦𝑛𝑒𝑛 👁️ ?
+𝑚𝑒𝑛𝑒𝑓𝑠𝑖𝑠ℎ 𝑎𝑦𝑑𝑒𝑙𝑒 𝑠𝑎𝑞𝑒𝑛 𝑦𝑒𝑓𝑒𝑡𝑒𝑟𝑎𝑡
+𝑧𝑜𝑟 𝑠𝑡𝑦 𝑎𝑦𝑑𝑒𝑙 𝑎𝑙𝑒𝑚𝑛 🌎 𝑦𝑒𝑚𝑓𝑒𝑟𝑎𝑡
+𝑒𝑛𝑘𝑢𝑎𝑛𝑚 𝑛𝑜𝑟𝑠ℎ𝑙𝑔𝑛
+𝑙𝑒.𝑒𝑔𝑟𝑠ℎ 🦶 𝑤𝑒𝑟𝑘 𝑐ℎ𝑎𝑚𝑎 👠 𝑠𝑢𝑓 🕴️
+𝑎𝑙𝑚𝑎𝑧 💍 𝑙𝑒𝑔𝑒𝑙𝑎𝑠ℎ 𝑐ℎ𝑦𝑒 𝑏𝑎𝑙𝑎𝑙𝑒𝑏𝑠𝑖𝑠ℎ
+𝑞𝑡𝑟 𝑏𝑎𝑙𝑡𝑎𝑑𝑒𝑙
+𝑠ℎ𝑜𝑚𝑒 𝑏𝑎𝑙𝑎𝑛𝑒𝑔𝑠𝑖𝑠ℎ
+       𝑙𝑘 𝑒𝑛𝑑𝑒𝑚𝑔𝑛𝑜𝑡𝑒 💭
+𝑏𝑎𝑦𝑠𝑒𝑚𝑟𝑙𝑔𝑛 𝑒𝑛𝑘𝑢𝑎𝑛 𝑎𝑛𝑐ℎ𝑖𝑛 
+         𝑚𝑎𝑑𝑒𝑙𝑎𝑑𝑒𝑙
+𝑘𝑒𝑑𝑒𝑠𝑎𝑠𝑎𝑤 𝑏𝑒𝑡𝑒 🏠 𝑏𝑎𝑟𝑦𝑎𝑠ℎ
+𝑒𝑛𝑑𝑒ℎ𝑜𝑛𝑘𝑢𝑔𝑛 𝑡𝑎𝑤𝑘𝑖𝑔𝑛𝑎𝑙𝑒𝑠ℎ
+             𝑎𝑦𝑑𝑒𝑙 ?
+𝑦ℎ𝑒𝑤𝑙𝑠ℎ 𝑠ℎ𝑎𝑚𝑎 🕯️
+𝑦ℎ𝑒𝑤𝑙𝑠ℎ  𝑠ℎ𝑒𝑚𝑎 
+𝑡𝑒𝑤𝑒𝑙𝑑𝑒𝑠ℎ 𝑤𝑒𝑙𝑑𝑒𝑠ℎ𝑔𝑛
+𝑏𝑒ℎ𝑎𝑠𝑒𝑡 𝑏𝑖𝑦𝑎𝑡𝑒𝑚𝑘𝑒𝑛
+𝑏𝑒.𝑎𝑚𝑒𝑡 𝑦𝑒𝑚𝑎𝑛𝑒𝑔𝑠𝑎𝑡 𝑏𝑒.𝑎𝑙
+𝑛𝑎𝑡 𝑦𝑐ℎ𝑖 𝑘𝑒𝑛
+          𝑛𝑢𝑟𝑖𝑙𝑔𝑛❤
+𝑠𝑎𝑘𝑒𝑏𝑟𝑒𝑤 𝑒𝑛𝑑𝑛𝑜𝑟
+𝑙𝑑𝑒𝑡𝑠ℎ𝑛 𝑙𝑑𝑒𝑡𝑒𝑛 
+𝑏𝑒.𝑎𝑙𝑒𝑛 𝑠𝑚ℎ𝑛
+𝑡𝑠𝑒𝑔𝑎 𝑦𝑎𝑏𝑧𝑎𝑛𝑎
+𝑠𝑎𝑞 𝑦𝑎𝑘𝑒𝑛𝑎𝑛𝑏𝑛𝑎
+𝑏𝑒𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ𝑠ℎ 𝑦𝑎𝑑𝑟𝑔𝑙𝑔𝑛
+𝑦𝑒𝑚𝑑𝑟 𝑒𝑑𝑚𝑒𝑠ℎ𝑛
+𝑎𝑚𝑒𝑛
+𝑎𝑚𝑒𝑛
+𝑎𝑚𝑒𝑛
+❤❤❤
+                </div>
+                <div class="poem-signature">With All My Love, Your Mekonnen 💕</div>
+            </div>
+            </div>
 
         <!-- Countdown Timer - Fixed Numbers -->
         <div class="countdown">
@@ -2063,6 +2224,36 @@ function initializeAutoFeatures() {
                 // Swipe up - scroll down
                 window.scrollBy({ top: 400, behavior: 'smooth' });
             }
+        // ===== POEM BUTTON =====
+const poemBtn = document.getElementById('poemBtn');
+const poemContent = document.getElementById('poemContent');
+
+poemBtn.addEventListener('click', () => {
+    if (poemContent.style.display === 'block') {
+        poemContent.style.display = 'none';
+        poemBtn.innerHTML = '<i class="fas fa-heart"></i> Poem for My Love 💌';
+    } else {
+        poemContent.style.display = 'block';
+        poemBtn.innerHTML = '<i class="fas fa-heart"></i> Hide Poem ✨';
+        
+        // Create floating hearts effect
+        createFloatingHearts();
+        createFloatingHearts();
+        createFloatingHearts();
+        
+        // Play romantic sound
+        playPoemSound();
+        
+        // Scroll to poem section
+        poemContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
+
+function playPoemSound() {
+    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-romantic-heartbeat-1151.mp3');
+    audio.volume = 0.2;
+    audio.play();
+}
         }
     </script>
 </body>
