@@ -1212,7 +1212,7 @@
     <!-- Fantastic Cake and Candle Animation -->
     <div class="cake-container" id="cakeContainer">
         <div class="cake">
-            <div class="cake-text">Happy Birthday My Love! 🎂💖</div>
+            <div class="cake-text">Happy Birthday My Love! 🎂💖 ➕❶ = ❷❺</div>
             <div class="cake-layer cake-bottom"></div>
             <div class="cake-layer cake-middle"></div>
             <div class="cake-layer cake-top"></div>
@@ -1410,66 +1410,79 @@
 
     <script>
         // ===== FANTASTIC CAKE ANIMATION WITH AUTO-PLAY MUSIC =====
-        function initializeAutoFeatures() {
-            // Auto-play music immediately with cake animation
+        // ===== FANTASTIC CAKE ANIMATION WITH AUTO-PLAY MUSIC =====
+function initializeAutoFeatures() {
+    // Auto-play music immediately with cake animation
+    setTimeout(() => {
+        const music1 = document.getElementById('birthdayMusic1');
+        const btn1 = document.getElementById('musicBtn1');
+        const icon1 = document.getElementById('icon1');
+        
+        // Force music to play
+        music1.play().then(() => {
+            console.log("Music started successfully!");
+            icon1.className = 'fas fa-pause';
+            btn1.classList.add('active');
+            isPlaying1 = true;
+            
+            // Add some fireworks for celebration
+            createFireworks();
+        }).catch(error => {
+            console.log("Auto-play prevented:", error);
+            // Show instruction to user but auto-remove after 3 seconds
+            const instruction = document.createElement('div');
+            instruction.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.9);
+                color: #ff4081;
+                padding: 30px 40px;
+                border-radius: 20px;
+                text-align: center;
+                z-index: 10002;
+                font-family: 'Dancing Script', cursive;
+                font-size: 2rem;
+                border: 3px solid #ff4081;
+                animation: pulse 2s infinite;
+            `;
+            instruction.innerHTML = `
+                <h3>🎵 Click to Enable Music 🎵</h3>
+                <p>Click the button on the page to hear birthday music and Gosaye Tesfaye Music ..Enatye!</p>
+                <p style="font-size: 1.5rem; margin-top: 10px;">🎂 Happy Birthday! 🎂</p>
+            `;
+            document.body.appendChild(instruction);
+            
+            // Auto-remove the notification after 3 seconds
             setTimeout(() => {
-                const music1 = document.getElementById('birthdayMusic1');
-                const btn1 = document.getElementById('musicBtn1');
-                const icon1 = document.getElementById('icon1');
-                
-                // Force music to play - this is the main fix for auto-play
+                if (instruction.parentElement) {
+                    instruction.remove();
+                }
+            }, 3000);
+            
+            // When user clicks anywhere, play music and remove notification
+            const enableMusicOnClick = () => {
                 music1.play().then(() => {
-                    console.log("Music started successfully!");
                     icon1.className = 'fas fa-pause';
                     btn1.classList.add('active');
                     isPlaying1 = true;
-                    
-                    // Add some fireworks for celebration
-                    createFireworks();
+                    // Remove notification if still exists
+                    if (instruction.parentElement) {
+                        instruction.remove();
+                    }
                 }).catch(error => {
-                    console.log("Auto-play prevented:", error);
-                    // Show instruction to user
-                    const instruction = document.createElement('div');
-                    instruction.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: rgba(0,0,0,0.9);
-                        color: #ff4081;
-                        padding: 30px 40px;
-                        border-radius: 20px;
-                        text-align: center;
-                        z-index: 10002;
-                        font-family: 'Dancing Script', cursive;
-                        font-size: 2rem;
-                        border: 3px solid #ff4081;
-                        animation: pulse 2s infinite;
-                    `;
-                    instruction.innerHTML = `
-                        <h3>🎵 Click to Enable Music 🎵</h3>
-                        <p>Click anywhere on the page to hear birthday music!</p>
-                        <p style="font-size: 1.5rem; margin-top: 10px;">🎂 Happy Birthday! 🎂</p>
-                    `;
-                    document.body.appendChild(instruction);
-                    
-                    // When user clicks anywhere, play music
-                    const enableMusicOnClick = () => {
-                        music1.play().then(() => {
-                            icon1.className = 'fas fa-pause';
-                            btn1.classList.add('active');
-                            isPlaying1 = true;
-                            instruction.remove();
-                        });
-                        document.removeEventListener('click', enableMusicOnClick);
-                        document.removeEventListener('touchstart', enableMusicOnClick);
-                    };
-                    
-                    document.addEventListener('click', enableMusicOnClick);
-                    document.addEventListener('touchstart', enableMusicOnClick);
+                    console.log("Music play failed on click:", error);
                 });
-            }, 500); // Start music 0.5 seconds after page load
-        }
+                document.removeEventListener('click', enableMusicOnClick);
+                document.removeEventListener('touchstart', enableMusicOnClick);
+            };
+            
+            document.addEventListener('click', enableMusicOnClick);
+            document.addEventListener('touchstart', enableMusicOnClick);
+        });
+    }, 500); // Start music 0.5 seconds after page load
+}
 
         // Initialize auto features when page loads
         window.addEventListener('load', initializeAutoFeatures);
