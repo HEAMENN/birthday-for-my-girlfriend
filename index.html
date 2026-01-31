@@ -2494,10 +2494,13 @@ function initializeAutoFeatures() {
         }, false);
 
         function handleSwipe() {
-            if (touchStartY - touchEndY > 50) {
-                // Swipe up - scroll down
-                window.scrollBy({ top: 400, behavior: 'smooth' });
-            }
+            function handleSwipe() {
+    if (touchStartY - touchEndY > 50) {
+        // Swipe up - scroll down
+        window.scrollBy({ top: 400, behavior: 'smooth' });
+    }
+}
+// ===== POEM BUTTON =====
         // ===== POEM BUTTON =====
 const poemBtn = document.getElementById('poemBtn');
 const poemContent = document.getElementById('poemContent');
