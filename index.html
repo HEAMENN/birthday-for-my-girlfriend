@@ -246,79 +246,79 @@
         }
 
         /* Music Player with Auto-Play */
-        .music-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            gap: 15px;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 15px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
-            border: 2px solid #e91e63;
-            animation: slideUpMusic 1s ease 3s forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
+.music-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
+    border: 2px solid #e91e63;
+    animation: slideDownMusic 1s ease 3s forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+}
 
-        @keyframes slideUpMusic {
-            to { opacity: 1; transform: translateY(0); }
-        }
+@keyframes slideDownMusic {
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .music-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, #e91e63, #ff4081);
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
+.music-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #e91e63, #ff4081);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-        .music-btn:hover {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, #c2185b, #d81b60);
-        }
+.music-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #c2185b, #d81b60);
+}
 
-        .music-btn.active {
-            background: linear-gradient(135deg, #4caf50, #2e7d32);
-            animation: pulse 1.5s infinite;
-        }
+.music-btn.active {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    animation: pulse 1.5s infinite;
+}
 
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 10px;
-        }
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
 
-        .volume-slider {
-            width: 100px;
-            -webkit-appearance: none;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            outline: none;
-        }
+.volume-slider {
+    width: 100px;
+    -webkit-appearance: none;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
 
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #e91e63;
-            cursor: pointer;
-            border: 2px solid white;
-        }
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e91e63;
+    cursor: pointer;
+    border: 2px solid white;
+}
 
         /* Lovely Photo Frames */
         .photo-frame-special {
