@@ -3013,6 +3013,50 @@ function initializeAutoFeatures() {
             }
             isPlaying2 = !isPlaying2;
         });
+        
+function showAudioHelp() {
+            // Create help notification
+            const helpDiv = document.createElement('div');
+            helpDiv.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.9);
+                color: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                z-index: 10002;
+                max-width: 400px;
+                animation: fadeIn 0.5s ease;
+                border: 3px solid #e91e63;
+            `;
+            helpDiv.innerHTML = `
+                <h3 style="color: #ff9800; margin-bottom: 20px;">🎵 Music Help</h3>
+                <p style="margin-bottom: 15px;">For music to work, please:</p>
+                <p style="margin-bottom: 20px;">1. Click anywhere on the page first</p>
+                <p style="margin-bottom: 20px;">2. Then click the music buttons</p>
+                <button onclick="this.parentElement.remove()" style="
+                    background: #e91e63;
+                    color: white;
+                    border: none;
+                    padding: 10px 30px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-weight: bold;
+                ">Got it!</button>
+            `;
+            document.body.appendChild(helpDiv);
+            
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                if (helpDiv.parentElement) {
+                    helpDiv.remove();
+                }
+            }, 8000);
+        }
+
 
         
         // ===== SURPRISE BUTTON =====
