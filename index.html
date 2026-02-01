@@ -1922,6 +1922,346 @@
             pointer-events: none;
             z-index: -1;
         }
+        /* Footer with Romantic Notes */
+.footer {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    margin: 60px 30px;
+    border-radius: 40px;
+    box-shadow: 
+        0 25px 70px rgba(255, 107, 107, 0.4),
+        inset 0 0 100px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-image: linear-gradient(45deg, #ff6b6b, #ff8e53, #ffafbd) 1;
+}
+
+/* Background Hearts */
+.footer-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bg-heart {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.1;
+    animation: floatHeart 15s infinite linear;
+}
+
+.bg-heart:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.bg-heart:nth-child(2) { top: 20%; right: 10%; animation-delay: 3s; }
+.bg-heart:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 6s; }
+.bg-heart:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 9s; }
+.bg-heart:nth-child(5) { top: 50%; left: 50%; animation-delay: 12s; }
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.1; }
+    50% { transform: translateY(-50px) rotate(180deg) scale(1.2); opacity: 0.2; }
+    100% { transform: translateY(0) rotate(360deg) scale(0.8); opacity: 0.1; }
+}
+
+/* Final Romantic Message */
+.final-romantic-message {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.95));
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #ff6b6b;
+}
+
+.final-romantic-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53, #ffafbd);
+}
+
+.message-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.message-title {
+    color: #ff6b6b;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-content {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.message-content p {
+    margin-bottom: 20px;
+}
+
+.message-signature {
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #ff6b6b;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px dashed #ffafbd;
+}
+
+.signature-name {
+    color: #ff8e53;
+    font-weight: bold;
+}
+
+/* Love Timeline */
+.love-timeline {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 240, 250, 0.9));
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin: 50px 0;
+    box-shadow: 0 20px 50px rgba(156, 39, 176, 0.2);
+    border: 5px solid transparent;
+    border-image: linear-gradient(45deg, #9c27b0, #e91e63, #ff4081) 1;
+}
+
+.love-timeline h2 {
+    color: #9c27b0;
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+}
+
+.timeline-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.timeline-item {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 3px solid #e91e63;
+}
+
+.timeline-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-date {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #9c27b0;
+    margin-bottom: 15px;
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+}
+
+.timeline-content {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Romantic Wishes */
+.romantic-wishes {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.95));
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin: 50px 0;
+    box-shadow: 0 20px 50px rgba(33, 150, 243, 0.2);
+    border: 5px solid transparent;
+    border-image: linear-gradient(45deg, #2196f3, #03a9f4, #00bcd4) 1;
+}
+
+.romantic-wishes h2 {
+    color: #2196f3;
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.wish-item {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    border: 3px solid #03a9f4;
+}
+
+.wish-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(33, 150, 243, 0.3);
+}
+
+.wish-emoji {
+    font-size: 3rem;
+    animation: float 3s infinite ease-in-out;
+}
+
+.wish-text {
+    font-size: 1.3rem;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Final Love Note */
+.final-love-note {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 240, 0.98));
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin: 50px 0;
+    box-shadow: 
+        0 20px 60px rgba(255, 107, 107, 0.3),
+        inset 0 0 50px rgba(255, 107, 107, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 8px solid #ff6b6b;
+}
+
+.final-love-note::before {
+    content: '💖';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.05;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.love-note-content {
+    position: relative;
+    z-index: 1;
+}
+
+.love-note-content h3 {
+    color: #ff6b6b;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.love-note-content p {
+    font-size: 1.5rem;
+    color: #555;
+    line-height: 2;
+    margin-bottom: 15px;
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+}
+
+.seal {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    background: #ff6b6b;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    transform: rotate(-5deg);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
+}
+
+/* Signature */
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #ff6b6b;
+    margin-top: 50px;
+    animation: signatureSparkle 4s infinite alternate;
+    text-shadow: 
+        2px 2px 6px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 107, 107, 0.4);
+}
+
+/* Copyright */
+.copyright {
+    margin-top: 40px;
+    font-size: 1.1rem;
+    color: #ff8e53;
+    line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        margin: 20px 15px;
+        padding: 40px 20px;
+    }
+    
+    .message-title {
+        font-size: 2.5rem;
+    }
+    
+    .message-content {
+        font-size: 1.2rem;
+    }
+    
+    .love-timeline h2,
+    .romantic-wishes h2 {
+        font-size: 2.2rem;
+    }
+    
+    .signature {
+        font-size: 3rem;
+    }
+    
+    .wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .message-title {
+        font-size: 2rem;
+    }
+    
+    .love-timeline h2,
+    .romantic-wishes h2 {
+        font-size: 1.8rem;
+    }
+    
+    .timeline-items,
+    .wishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .signature {
+        font-size: 2.5rem;
+    }
+}
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -2254,30 +2594,103 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <div class="final-message">
-                AFEKRSHALEW<br>
-                AFEKRWOTALEW<br>
-                AFEKRSHIWOTALEW<br>
-                AKEBRSHALEW<br>
-                ESASALSHALEW<br>
-                ASBSHALEW
-            </div>
-            
-            <p style="font-size: 1.8rem; margin: 40px 0; color: #555; line-height: 1.6;">
-                Forever Yours, <br>
-                Your <span style="color: #2196f3; font-weight: bold;">ABA | MEKU</span> ❤️
-            </p>
-            
-            <div class="signature">With All My Love, Mekonnen 💕</div>
-            
-            <p style="margin-top: 40px; font-size: 1.1rem; color: #888;">
-                Made with ❤️ especially for you, my beautiful Ruth
+        <!-- Footer with Romantic Notes -->
+<div class="footer">
+    <!-- Background Elements -->
+    <div class="footer-bg-elements">
+        <div class="bg-heart">❤️</div>
+        <div class="bg-heart">💕</div>
+        <div class="bg-heart">💖</div>
+        <div class="bg-heart">💗</div>
+        <div class="bg-heart">💓</div>
+    </div>
+    
+    <!-- Final Romantic Message -->
+    <div class="final-romantic-message">
+        <div class="message-icon">💌</div>
+        <h2 class="message-title">To My Beautiful Ruth 💝</h2>
+        <div class="message-content">
+            <p>My dearest Enatye,</p>
+            <p>As I write these words, my heart overflows with love for you. Every day with you feels like a beautiful dream I never want to wake up from.</p>
+            <p>Your smile lights up my world, your laughter is my favorite music, and your love is the greatest gift I've ever received.</p>
+            <p>On this special day, I want you to know that you are loved beyond measure, cherished beyond words, and treasured beyond time.</p>
+            <p class="message-signature">
+                Forever Yours,<br>
+                <span class="signature-name">Your ABA | MEKU 💕</span>
             </p>
         </div>
     </div>
     
+    <!-- Love Timeline -->
+    <div class="love-timeline">
+        <h2>Our Beautiful Journey Together ⏳</h2>
+        <div class="timeline-items">
+            <div class="timeline-item">
+                <div class="timeline-date">2017</div>
+                <div class="timeline-content">The day our hearts first met 💘</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Every Day</div>
+                <div class="timeline-content">Growing in love and understanding 💕</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Today</div>
+                <div class="timeline-content">Celebrating your beautiful existence 🎂</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Forever</div>
+                <div class="timeline-content">Building our dreams together ✨</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Romantic Wishes -->
+    <div class="romantic-wishes">
+        <h2>Birthday Wishes for My Queen 👑</h2>
+        <div class="wishes-grid">
+            <div class="wish-item">
+                <div class="wish-emoji">🌟</div>
+                <div class="wish-text">May stars align to bring you joy</div>
+            </div>
+            <div class="wish-item">
+                <div class="wish-emoji">🌹</div>
+                <div class="wish-text">May your days be filled with beauty</div>
+            </div>
+            <div class="wish-item">
+                <div class="wish-emoji">💫</div>
+                <div class="wish-text">May magic follow wherever you go</div>
+            </div>
+            <div class="wish-item">
+                <div class="wish-emoji">🎁</div>
+                <div class="wish-text">May all your dreams come true</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Final Love Note -->
+    <div class="final-love-note">
+        <div class="love-note-content">
+            <h3>From the depths of my heart 💖</h3>
+            <p>You are my today and all of my tomorrows.</p>
+            <p>You are the reason I believe in forever.</p>
+            <p>You are the love I've been searching for my entire life.</p>
+            <p>Happy Birthday to the woman who owns my heart completely.</p>
+        </div>
+        <div class="seal">FOREVER YOURS</div>
+    </div>
+    
+    <!-- Signature -->
+    <div class="signature">
+        With All My Love,<br>
+        Your Mekonnen 💕
+    </div>
+    
+    <!-- Copyright -->
+    <p class="copyright">
+        Made with ❤️ especially for you, my beautiful Ruth<br>
+        © Eternal Love - Today and Always
+    </p>
+</div>
 
     <!-- Audio Elements - Using your SoundCloud links -->
     <audio id="birthdayMusic1" loop preload="auto">
