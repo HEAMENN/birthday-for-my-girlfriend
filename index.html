@@ -188,6 +188,43 @@
         .candle:nth-child(9) { left: 330px; animation-delay: 0.6s; }
 
         /* Cake text with sparkle effect */
+        /* SPECTACULAR CAKE TEXT */
+.cake-text {
+    position: absolute;
+    bottom: 350px;
+    color: #ff4081;
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    text-align: center;
+    text-shadow: 
+        0 0 30px #ff4081,
+        0 0 60px #ff4081,
+        0 0 90px #ff4081,
+        0 0 120px #ff4081;
+    animation: 
+        textExplode 1s ease-out forwards,
+        textSparkle 2s infinite alternate,
+        textFloat 4s ease-in-out infinite;
+    background: 
+        linear-gradient(45deg, 
+            #ff4081 0%, 
+            #ff9800 25%, 
+            #ffd700 50%, 
+            #4caf50 75%, 
+            #2196f3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 30px 60px;
+    border-radius: 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    border: 4px solid rgba(255, 64, 129, 0.5);
+    box-shadow: 
+        0 0 50px rgba(255, 64, 129, 0.5),
+        inset 0 0 50px rgba(255, 255, 255, 0.1);
+    z-index: 100;
+}
         
 /* SPECTACULAR 3D BIRTHDAY CAKE WITH FIREWORKS */
 .cake-container {
