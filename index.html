@@ -2703,6 +2703,7 @@
     <script>
         // ===== FANTASTIC CAKE ANIMATION WITH AUTO-PLAY MUSIC =====
         // ===== FANTASTIC CAKE ANIMATION WITH AUTO-PLAY MUSIC =====
+// ===== FANTASTIC CAKE ANIMATION WITH AUTO-PLAY MUSIC =====
 function initializeAutoFeatures() {
     // Auto-play music immediately with cake animation
     setTimeout(() => {
@@ -2721,48 +2722,12 @@ function initializeAutoFeatures() {
             createFireworks();
         }).catch(error => {
             console.log("Auto-play prevented:", error);
-            // Show instruction to user but auto-remove after 3 seconds
-            const instruction = document.createElement('div');
-            instruction.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0,0,0,0.9);
-                color: #ff4081;
-                padding: 30px 40px;
-                border-radius: 20px;
-                text-align: center;
-                z-index: 10002;
-                font-family: 'Dancing Script', cursive;
-                font-size: 2rem;
-                border: 3px solid #ff4081;
-                animation: pulse 2s infinite;
-            `;
-            instruction.innerHTML = `
-                <h3>🎵 Click to Enable Music 🎵</h3>
-                <p>Click the button on the page to hear birthday music and Gosaye Tesfaye Music ..Enatye!</p>
-                <p style="font-size: 1.5rem; margin-top: 10px;">🎂 Happy Birthday! 🎂</p>
-            `;
-            document.body.appendChild(instruction);
-            
-            // Auto-remove the notification after 3 seconds
-            setTimeout(() => {
-                if (instruction.parentElement) {
-                    instruction.remove();
-                }
-            }, 3000);
-            
-            // When user clicks anywhere, play music and remove notification
+            // When user clicks anywhere, play music (NO POPUP NOTIFICATION)
             const enableMusicOnClick = () => {
                 music1.play().then(() => {
                     icon1.className = 'fas fa-pause';
                     btn1.classList.add('active');
                     isPlaying1 = true;
-                    // Remove notification if still exists
-                    if (instruction.parentElement) {
-                        instruction.remove();
-                    }
                 }).catch(error => {
                     console.log("Music play failed on click:", error);
                 });
@@ -2776,8 +2741,8 @@ function initializeAutoFeatures() {
     }, 500); // Start music 0.5 seconds after page load
 }
 
-        // Initialize auto features when page loads
-        window.addEventListener('load', initializeAutoFeatures);
+// Initialize auto features when page loads
+window.addEventListener('load', initializeAutoFeatures);
 
         // ===== CONFIGURATION =====
         // Updated Photos with personalized notes
@@ -2965,54 +2930,55 @@ function initializeAutoFeatures() {
         });
 
         // Music button 1 (Birthday Song)
-        btn1.addEventListener('click', () => {
-            if (isPlaying1) {
-                music1.pause();
-                icon1.className = 'fas fa-play';
-                btn1.classList.remove('active');
-            } else {
-                music1.play().then(() => {
-                    icon1.className = 'fas fa-pause';
-                    btn1.classList.add('active');
-                    // Pause other music if playing
-                    if (isPlaying2) {
-                        music2.pause();
-                        isPlaying2 = false;
-                        icon2.className = 'fas fa-play';
-                        btn2.classList.remove('active');
-                    }
-                }).catch(error => {
-                    console.log("Audio play failed:", error);
-                    showAudioHelp();
-                });
-            }
-            isPlaying1 = !isPlaying1;
-        });
-
-        // Music button 2 (Romantic Music)
-        btn2.addEventListener('click', () => {
+        // Music button 1 (Birthday Song)
+btn1.addEventListener('click', () => {
+    if (isPlaying1) {
+        music1.pause();
+        icon1.className = 'fas fa-play';
+        btn1.classList.remove('active');
+    } else {
+        music1.play().then(() => {
+            icon1.className = 'fas fa-pause';
+            btn1.classList.add('active');
+            // Pause other music if playing
             if (isPlaying2) {
                 music2.pause();
+                isPlaying2 = false;
                 icon2.className = 'fas fa-play';
                 btn2.classList.remove('active');
-            } else {
-                music2.play().then(() => {
-                    icon2.className = 'fas fa-pause';
-                    btn2.classList.add('active');
-                    // Pause other music if playing
-                    if (isPlaying1) {
-                        music1.pause();
-                        isPlaying1 = false;
-                        icon1.className = 'fas fa-play';
-                        btn1.classList.remove('active');
-                    }
-                }).catch(error => {
-                    console.log("Audio play failed:", error);
-                    showAudioHelp();
-                });
             }
-            isPlaying2 = !isPlaying2;
+        }).catch(error => {
+            console.log("Audio play failed:", error);
+            // No notification shown
         });
+    }
+    isPlaying1 = !isPlaying1;
+});
+
+// Music button 2 (Romantic Music)
+btn2.addEventListener('click', () => {
+    if (isPlaying2) {
+        music2.pause();
+        icon2.className = 'fas fa-play';
+        btn2.classList.remove('active');
+    } else {
+        music2.play().then(() => {
+            icon2.className = 'fas fa-pause';
+            btn2.classList.add('active');
+            // Pause other music if playing
+            if (isPlaying1) {
+                music1.pause();
+                isPlaying1 = false;
+                icon1.className = 'fas fa-play';
+                btn1.classList.remove('active');
+            }
+        }).catch(error => {
+            console.log("Audio play failed:", error);
+            // No notification shown
+        });
+    }
+    isPlaying2 = !isPlaying2;
+});
         
 function showAudioHelp() {
             // Create help notification
