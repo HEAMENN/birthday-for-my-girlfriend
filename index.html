@@ -1165,6 +1165,21 @@
             border: 10px solid transparent;
             border-image: linear-gradient(45deg, #e91e63, #ff9800, #4caf50) 1;
         }
+    .hidden-surprise {
+    display: none;  /* Add this line */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 240, 245, 0.98));
+    border-radius: 35px;
+    padding: 70px 50px;
+    margin-top: 60px;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.3),
+        inset 0 0 50px rgba(233, 30, 99, 0.1);
+    animation: surpriseReveal 1.2s ease;
+    position: relative;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-image: linear-gradient(45deg, #e91e63, #ff9800, #4caf50) 1;
+}
 
         @keyframes surpriseReveal {
             from { transform: translateY(60px); opacity: 0; }
@@ -1296,6 +1311,23 @@
     text-align: center;
     font-family: 'Noto Sans Ethiopic', 'Poppins', sans-serif;
 }
+    .poem-content {
+    display: none;  /* Add this line */
+    background: linear-gradient(135deg, rgba(255, 240, 245, 0.98), rgba(240, 240, 255, 0.98));
+    border-radius: 35px;
+    padding: 50px 40px;
+    margin-top: 40px;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.2),
+        inset 0 0 50px rgba(156, 39, 176, 0.1);
+    animation: poemReveal 1.2s ease;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid transparent;
+    border-image: linear-gradient(45deg, #9c27b0, #673ab7, #3f51b5) 1;
+    text-align: center;
+    font-family: 'Noto Sans Ethiopic', 'Poppins', sans-serif;
+}
 
 @keyframes poemReveal {
     from { transform: translateY(60px); opacity: 0; }
@@ -1411,7 +1443,20 @@
     border: 8px solid transparent;
     text-align: center;
 }
-
+    
+.memories-content, .notes-content, .dreams-content {
+    display: none;  /* Add this line */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 240, 255, 0.98));
+    border-radius: 30px;
+    padding: 50px 40px;
+    margin-top: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: contentReveal 1s ease;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid transparent;
+    text-align: center;
+}
 .memories-content {
     border-image: linear-gradient(45deg, #ff6b6b, #ffd166) 1;
 }
@@ -3669,23 +3714,26 @@ function showAudioHelp() {
 
         
         // ===== SURPRISE BUTTON =====
-        const surpriseBtn = document.getElementById('surpriseBtn');
-        const hiddenSurprise = document.getElementById('hiddenSurprise');
+        // ===== SURPRISE BUTTON =====
+const surpriseBtn = document.getElementById('surpriseBtn');
+const hiddenSurprise = document.getElementById('hiddenSurprise');
 
-        surpriseBtn.addEventListener('click', () => {
-            if (hiddenSurprise.style.display === 'block') {
-                hiddenSurprise.style.display = 'none';
-                surpriseBtn.innerHTML = '<i class="fas fa-gift"></i> Birthday Surprise! 🎁';
-            } else {
-                hiddenSurprise.style.display = 'block';
-                surpriseBtn.innerHTML = '<i class="fas fa-gift"></i> Hide Surprise ✨';
-                createFireworks();
-                playSurpriseSound();
-                
-                // Scroll to surprise section
-                hiddenSurprise.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
+surpriseBtn.addEventListener('click', () => {
+    const currentDisplay = window.getComputedStyle(hiddenSurprise).display;
+    
+    if (currentDisplay === 'block') {
+        hiddenSurprise.style.display = 'none';
+        surpriseBtn.innerHTML = '<i class="fas fa-gift"></i> Birthday Surprise! 🎁';
+    } else {
+        hiddenSurprise.style.display = 'block';
+        surpriseBtn.innerHTML = '<i class="fas fa-gift"></i> Hide Surprise ✨';
+        createFireworks();
+        playSurpriseSound();
+        
+        // Scroll to surprise section
+        hiddenSurprise.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
 
         // ===== PROMISE BUTTON =====
         const promiseBtn = document.getElementById('promiseBtn');
@@ -3970,11 +4018,14 @@ function showAudioHelp() {
 }
 // ===== POEM BUTTON =====
         // ===== POEM BUTTON =====
+// ===== POEM BUTTON =====
 const poemBtn = document.getElementById('poemBtn');
 const poemContent = document.getElementById('poemContent');
 
 poemBtn.addEventListener('click', () => {
-    if (poemContent.style.display === 'block') {
+    const currentDisplay = window.getComputedStyle(poemContent).display;
+    
+    if (currentDisplay === 'block') {
         poemContent.style.display = 'none';
         poemBtn.innerHTML = '<i class="fas fa-heart"></i> Poem for My Love 💌';
     } else {
@@ -4038,7 +4089,9 @@ dreamsBtn.addEventListener('click', () => {
 });
 
 function toggleContent(content, button, originalText) {
-    if (content.style.display === 'block') {
+    const currentDisplay = window.getComputedStyle(content).display;
+    
+    if (currentDisplay === 'block') {
         content.style.display = 'none';
         button.innerHTML = `<i class="fas fa-${getIcon(button.id)}"></i> ${originalText}`;
     } else {
